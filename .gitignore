@@ -1,0 +1,25 @@
+#dependencies
+node_modules
+
+#non-necessary testing files
+#coverage
+
+#production build
+dist
+
+#API keyes
+#.env
+
+#dev workspace
+FSD_Image_Processing_API.code-workspace
+
+#misc development files
+misc
+REQUIREMENTS.md
+rubic-FSD_Image_Processing_API.txt
+
+#git
+.gitconfig
+
+#non-relevant projec data Files
+#TBD
