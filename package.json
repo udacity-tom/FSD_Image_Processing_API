@@ -7,8 +7,8 @@
     "start": "nodemon src/index.ts",
     "build": "npx tsc",
     "test": "npm run build && npm run jasmine",
-    "eslint": "eslint --config .eslintrc '*.js'",
-    "prettier": "prettier --config .prettierrc '*.js' --write"
+    "eslint": "eslint --config .eslintrc 'src/*.ts'",
+    "prettier": "prettier --config .prettierrc 'src/*.ts' --write"
   },
   "author": "Udacity",
   "license": "ISC",
