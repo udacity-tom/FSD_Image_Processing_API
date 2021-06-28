@@ -1,23 +1,29 @@
 {
-    "name": "FSD_Image_Processing_API",
-    "version": "0.0.1",
-    "description": "Process image and create thumbnails using Sharp library on Node server",
-    "main": "index.ts",
-    "scripts": {
-      "start": "nodemon src/index.ts",
-      "build": "npx tsc"
-    },
-    "author": "Udacity",
-    "license": "ISC",
-    "devDependencies": {
-      "@types/express": "^4.17.8",
-      "@types/node": "^14.14.6",
-      "nodemon": "^2.0.6",
-      "ts-node": "^9.0.0",
-      "typescript": "^4.0.5"
-    },
-    "dependencies": {
-      "express": "^4.17.1"
-    }
+  "name": "FSD_Image_Processing_API",
+  "version": "0.0.1",
+  "description": "Process image and create thumbnails using Sharp library on Node server",
+  "main": "index.ts",
+  "scripts": {
+    "start": "nodemon src/index.ts",
+    "build": "npx tsc",
+    "test": "npm run build && npm run jasmine",
+    "eslint": "eslint --config .eslintrc '*.js'",
+    "prettier": "prettier --config .prettierrc '*.js' --write"
+  },
+  "author": "Udacity",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.14.6",
+    "eslint": "^7.29.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "nodemon": "^2.0.6",
+    "prettier": "^1.19.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
-  
+}
