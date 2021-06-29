@@ -22,15 +22,15 @@ const sharpApp: any = sharp();
 // }
 
 function sharpUtil(fileName: string): void {
-    // sharp('../fjord.jpg')
-    sharp({
-        create: {
-        width: 48,
-        height: 48,
-        channels: 4,
-        background: { r: 255, g: 0, b: 0, alpha: 0.5 } 
-    }})
-    // .resize(300, 200)
+    sharp('fjord.jpg')
+    // sharp({
+    //     create: {
+    //     width: 48,
+    //     height: 48,
+    //     channels: 4,
+    //     background: { r: 255, g: 0, b: 0, alpha: 0.5 } 
+    // }})
+    .resize(300, 200)
     .toFile('output.jpg', function(err, info) {
         console.log('sharp error', err, info);
         // console.log('current path', __dirname);
