@@ -1,37 +1,31 @@
 import express from 'express';
 import sharpUtil from './utilities/sharpUtil';
+// import path from 'path';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3001;
 
 //initial middlware stub
-function convertImage(convert:{filename:string, width:number, height:number}) {
-    // const xValue = 300;
-    // const yValue = 200;
+function convertImage(convert:{filename:string, width:number, height:number}): string {
     const imagePath: string = __dirname.slice(0,__dirname.length-4)+'/assets/';
-    console.log('imagePath',imagePath);
-    // const fileName: string = 'fjord.jpg';
+    // console.log('imagePath',imagePath);
     console.log(`The file named ${convert.filename} will be converted to ${convert.width} by ${convert.height}`);
-    // console.log('fileName imagePath', fileName, imagePath);
-    sharpUtil(convert.filename, imagePath, convert.width, convert.height);
-    // const success = sharpUtil(fileName, imagePath, xValue, yValue);
-    // if(success) {
-        // :{filename:string, width:number, height:number}
-    // };
+    return sharpUtil(convert.filename, imagePath, convert.width, convert.height);
+
 }
 
 app.get('/convertImage', (req, res) => {
     console.log('req.query', req.query);
     console.log('type of req.query', typeof req.query);
-    // let ParsedQ:{filename:string, width:number, height:number};
-    // ParsedQ = req.query;
     let convert:{filename:string, width:number, height:number} = req.query as unknown as {filename:string, width:number, height:number};
-    // let convert:{filename:string, width:number, height:number} ;
-    // const filename = req.query.filename as string;
-    // const = req.query;
-    // let convert:{filename:string, width:number, height:number};
-    convertImage(convert);
-    res.send('Request received');
+
+    //TODO: read files in thumb directory, check if present with given parameters, then serve 'cached' file from disk
+    //use node fs.read (file test criteria `${imagePath}thumb/${fileName.slice(0,fileName.length-4)}_${xValue}_${yValue}.jpg`)
+    // convertImage(convert);
+    // res.send('Request received');
+    const pathOfImage: string = convertImage(convert);
+    console.log('convertImage()', );
+    res.sendFile(convertImage(convert));
 });
 
 app.listen(port, () => {
