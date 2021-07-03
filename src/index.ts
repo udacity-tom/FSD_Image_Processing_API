@@ -1,4 +1,5 @@
 import express from 'express';
+import fs from 'fs';
 import sharpConvert from './utilities/sharpUtil';
 // import path from 'path';
 
@@ -25,45 +26,13 @@ const port = process.env.PORT || 3001;
         height
     }
     
-    //TODO: read files in thumb directory, check if present with given parameters, then serve 'cached' file from disk
-    //use node fs.read (file test criteria `${imagePath}thumb/${fileName.slice(0,fileName.length-4)}_${xValue}_${yValue}.jpg`)
-    // convertImage(convert);
-    // res.send('Request received');
-    // const pathOfImage: string = convertImage(convert);
-    // console.log('convertImage()', );
-
-    // const convertedImage: Promise<string> = (async (): Promise<string> => {
-    //      return await convertImage(convert) as unknown as string ;
-    // })();
-
-
-    // let responsePath:string; 
-
-    // const convertedImage: string = sharpConvert(convert) as unknown as string;
-    // const convertedImage = async () => {
-    //     const response =  sharpConvert(convert);
-    //     console.log('index.ts response is', await Promise.resolve(response));
-    //     let responsePath = await Promise.resolve(response) ;
-    //     return responsePath;
-    // }
+    if(!fs.existsSync(outputFile)){
+        console.log("File doesn't exist, creating it...");
+        await sharpConvert(fileToConvert);
+    } else {
+        console.log("File already exists, serving from disk");
+    }
     
-    // let convertedImage = sharpConvert(convert);
-    // console.log('convertedImage index.ts',convertedImage);
-    
-    // convertedImage();
-    // console.log("convertedImage", convertedImage());
-    // let responsePath = convertedImage() as unknown as string;
-    // console.log('responsePath', responsePath);
-    // res.sendFile(responsePath);
-    
-    // process.nextTick( () => res.sendFile(convertedImage() as unknown as string));
-    
-    // console.log('sharpConvert',sharpConvert(convert));
-    
-    // res.sendFile(responsePath);
-    // console.log('sharpConvert(fileToConvert)',sharpConvert(fileToConvert));
-
-    await sharpConvert(fileToConvert);
     
     res.sendFile(outputFile);
 
