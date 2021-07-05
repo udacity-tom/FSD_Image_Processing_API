@@ -22,7 +22,7 @@ app.listen(port, () => {
 
 //DONE:TODO: add error handling as middleware what happens when width, height equals '' ? it crashes
 //TODO: add format change additional functions in sharpUTIL
-//TODO: additional sharp processing options?
+//TODO: additional sharp processing options?  (Adding for example an extra option for toFormat(png) eg. &format=png or = )
 //TODO: create a front-end that displays a thumbnail directory?
 /*Loop over existing images in thumbs and display at the bottom of screen?
 res.send files as images on a second route?

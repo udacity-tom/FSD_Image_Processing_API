@@ -1,7 +1,7 @@
 // import sharp, { Sharp }  from 'sharp';
 import sharp from 'sharp';
 import {promises as fsPromises} from 'fs';
-
+//uses sharp to convert file according to user req
 const sharpConvert = async (convert:{inputFile:string, outputFile:string, width:number, height:number}):Promise<string | void> => {
     await sharp(convert.inputFile)
     .resize(Number(convert.width), Number(convert.height))

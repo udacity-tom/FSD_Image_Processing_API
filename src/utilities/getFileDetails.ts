@@ -1,6 +1,6 @@
 
 function getFileDetails (givenReq:object): object {
-    //collate given data
+    //collate given user data 
     let userParams = givenReq as unknown as {filename:string, width:number, height:number};
     const imagePath = process.cwd()+'/assets/';
     const width: number = userParams.width;

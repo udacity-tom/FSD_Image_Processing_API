@@ -1,10 +1,10 @@
 import sharpConvert from './sharpUtil';
 import fs from 'fs';
 import getTimeAndDate from './getTimeAndDate';
-
+//checks if image is already on disk
 async function imageCheck (giveObj: object) {
     let obj = giveObj as unknown as {filename: string, outputFilename: string, inputFile: string, outputFile: string, width: number, height: number};
-    
+    //returns boolean for user requested file whether on disk
     if(!fs.existsSync(obj.outputFile)){
         console.log(`${getTimeAndDate()} ${obj.outputFilename} doesn't exist, creating it...`);
         await sharpConvert(obj);
@@ -13,6 +13,5 @@ async function imageCheck (giveObj: object) {
     }
     return obj.outputFile;
 }
-
 
 export default imageCheck;
