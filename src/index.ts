@@ -1,24 +1,33 @@
 import express from 'express';
 import imageCheck from './utilities/imageCheck';
 import logger from './utilities/logger';
+import getFileDetails from './utilities/getFileDetails';
 import errProcess from './utilities/errProcess';
 
 //sets up Express/port
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use( (req: express.Request, res: express.Response, next:Function):void => {
-    console.log('Activity noted:', Date.now());
-    next();
-});
+// app.use( (req: express.Request, res: express.Response, next:Function):void => {
+//     console.log('Activity noted:', Date.now());
+//     next();
+// });
 
-app.use(logger, errProcess);
+//app level middleware - no endpoint
+// app.use(logger);
+// app.use(errProcess);
+
+
 
 //async endpoint
- app.get('/convertImage', async (req, res) => {
+ app.get('/convertImage',errProcess, logger, async (req: { query: object; }, res: { sendFile: (arg0: string) => void; }) => {
     //extracts request information for file/dimensions for resize
-    const outputFile = await imageCheck(req.query);
-    res.sendFile(outputFile);
+    // console.log(getFileDetails(req.query));
+    let fileObj:{"inputFile": string, "outputFile": string, "width": number, "height": number} = getFileDetails(req.query) as unknown as {inputFile: string, outputFile: string, width: number, height: number};
+    // console.log('fileObj', fileObj.inputFile);
+    // console.log('imageCheck(fileObj)', imageCheck(fileObj));
+    await imageCheck(fileObj);
+    res.sendFile(fileObj.outputFile);
 });
 
 app.listen(port, () => {
