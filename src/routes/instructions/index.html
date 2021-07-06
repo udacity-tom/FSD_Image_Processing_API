@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<main>    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content= "width-device-width, initial-scale=1.0">
+        <title>Image Processing API</title>
+    </head>
+    <style>
+        body {
+            margin-left: 50px;
+            margin-top: 50px;
+        }
+
+        span {
+            text-decoration: line-through;
+        }
+
+        code {
+            font-size: x-large;
+            }
+    </style>
+    <body>
+        <section>
+            <p><a href="http://localhost:3001/convertImage?filename=myimage.png&format=jpg&width=300&height=300">Return to image conversion link</a></p>
+        </section>
+        <section>
+            <h1>Using the Image Processing API</h1>
+
+            <h2>An Overview</h2>
+            <p>This Image Processing API was creaeted to enable image reprocessing of images into various sizes and file types.</p>
+            <p>Using the following URL request image files can be resized and re-formatted to whatever the user requires from the original image.</p>
+            <p></p>
+            <p>After the initial server request, the file is created based on the URL request parameters as detailed below.</p>
+            <p></p>
+            <p>Once created, the file will be delivered from disk instead of re-creating the resized image effectively casching the image on the local server.</p>
+            <br>
+        </section>
+        <section>
+            <h2>Generic Example & Explanation</h2>
+            <p></p>
+            <br>
+            <code>http://localhost:3001/convertImage?filename=IMAGE_FILENAME&format=OUTPUT_FORMAT&width=WIDTH_PIXELS&height=HEIGHT_PIXELS</code>
+            <p></p>
+            <br>
+            <p>Where HEIGHT_PIXELS represents the desired resized image height, as a number, in pixels.</p>
+            <p></p>
+            <p>Where WIDTH_PIXELS represents the desired resized image width, as a number, in pixels.</p>
+            <p></p>
+            <p>OUTPUT_FORMAT represents the desired image format, as described below.</p>
+            <p></p>
+            <p>Where IMAGE_FILENAME is the filename of the image to be processed. </p>
+            <p></p>  
+            <br>
+        </section>
+        <section>
+            <h2>Image File Formats</h2>
+            <p></p>
+                <p>Accepted input image formats for IMAGE_FILENAME with the following file extensions will be automatically detected are: </p>
+                <ul>
+                    <li>JPEG '.jpg'</li>
+                    <li>PNG '.png'</li>
+                    <li>WebP '.webp'</li>
+                    <li>AVIF '.avif'</li>
+                    <li>TIFF '.tif'</li>
+                    <li>DZI '.dzi'</li>
+                    <li>libvips' V</li>
+                </ul>
+                <p>The following lists potential output formats. </p>
+                <p>Valid values for OUTPUT_FORMAT are: </p>
+                <ul>
+                    <li>JPEG 'jpg'</li>
+                    <li>PNG 'png'</li>
+                    <li>WebP 'webp'</li>
+                    <li>AVIF 'avif'</li>
+                    <li>TIFF 'tif'</li>
+                    <li>GIF 'gif'</li>
+                    <li>HEIF 'heif'</li>
+                    <li>RAW 'raw'</li>
+                </ul>
+            </p>
+            <p></p>
+        </section>
+        <section>
+            <h2><strong>Example 1</strong></h2>
+                <p></p>
+                <p>The following URL converts an image with the name: myimage.png to 300 pixels wide by 300 pixels high saving the results to jpg file format.</p>
+                <p></p>
+                <p>IMAGE_FILENAME : myimage.png</p>
+                <p></p>
+                <p>OUTPUT_FORMAT : jpg</p>
+                <p></p>
+                <p>WIDTH_PIXELS : 300</p>
+                <p></p>
+                <p>HEIGHT_PIXELS : 300</p>
+                <p></p>
+                <p>Enter the following URL to obtain the desired image resizing.</p>
+                <p></p>
+                <code>http://localhost:3001/convertImage?filename=myimage.png&format=jpg&width=300&height=300</code>
+        </section>
+        <section>
+            <h2><strong>Example 2</strong></h2>
+                <p></p>
+                <p>The following URL converts an image with the name: yourimage.png to 800 pixels wide by 500 pixels high saving the results to png file format.</p>
+                <p></p>
+                <p>IMAGE_FILENAME : myimage.png</p>
+                <p></p>
+                <p><span>OUTPUT_FORMAT : png</span> *When saving in the original output format this option is unneeded.</p>
+                <p></p>
+                <p>WIDTH_PIXELS : 300</p>
+                <p></p>
+                <p>HEIGHT_PIXELS : 300</p>
+                <p></p>
+                <p>Enter the following URL to obtain the desired image resizing.</p>
+                <p></p>
+                <code>http://localhost:3001/convertImage?filename=yourimage.png&width=800&height=500</code>
+        </section>
+    </body>
+</main>

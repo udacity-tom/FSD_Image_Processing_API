@@ -5,12 +5,13 @@ import fs from 'fs';
 
 
 const errHandler = (req: {query: any; path: any;}, res: any, next: () => void) => {
-    const inputFileGiven = getFileDetails(req.query) as unknown as {filename: string, outputFilename: string, inputFile: string, outputFile: string, width: number, height: number};
+    const inputFileGiven = getFileDetails(req.query) as unknown as {filename: string, fileExtension: string, outputFilename: string, inputFile: string, outputFile: string, width: number, height: number};
+    
     let errorMessage: string = '';
     
     switch (true)  {
         case req.query.width == '' || isNaN(req.query.width):
-            errorMessage = "Error: To resize image enter a valid width";
+            errorMessage = "Error: To resize image enter a valid width.";
             break;            
         case req.query.height == '' || isNaN(req.query.height):
             errorMessage = "Error: To resize image enter a valid height";
@@ -25,6 +26,7 @@ const errHandler = (req: {query: any; path: any;}, res: any, next: () => void) =
         //     errorMessage = 'Unknown system error, please try again.';
     }
     if(errorMessage != ''){
+        errorMessage += ` See <a href:${process.cwd()}/routes/instructions/index.html>/instructions</a> for more details.`;
         console.log(`${getTimeAndDate()} ${errorMessage}`);
         res.send(errorMessage);
     } else {

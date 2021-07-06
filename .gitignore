@@ -9,6 +9,9 @@ node_modules
 build/
 images/
 *.jpg
+*.png
+*.pdf
+*.webp
 action.log
 
 #API keyes
@@ -26,4 +29,4 @@ rubic-FSD_Image_Processing_API.txt
 .gitconfig
 
 #non-relevant projec data Files
-#TBD
+.eslintignore
