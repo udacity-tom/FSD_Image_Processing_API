@@ -38,7 +38,7 @@
         </section>
         <section>
             <h2>Generic Example & Explanation</h2>
-            <p></p>
+            <p>Use the following URL to reference how to access the API. The converted file can be called with the URL used to resize the image.</p>
             <br>
             <code>http://localhost:3001/convertImage?filename=IMAGE_FILENAME&format=OUTPUT_FORMAT&width=WIDTH_PIXELS&height=HEIGHT_PIXELS</code>
             <p></p>
@@ -82,9 +82,18 @@
             <p></p>
         </section>
         <section>
+            <h2><strong>Image Locations</strong></h2>
+                <p></p>
+                <p>The returned images are linkable by the URL used to resize them.</p>
+                <p></p>
+                <p>Original images are stored on the server in the 'assets' directory in the root of the project.. </p>
+                <p></p>
+                <p>The resized immages are stored in the 'thumb' directory within the 'assets' directory.</p>
+        </section>
+        <section>
             <h2><strong>Example 1</strong></h2>
                 <p></p>
-                <p>The following URL converts an image with the name: myimage.png to 300 pixels wide by 300 pixels high saving the results to jpg file format.</p>
+                <p>The following URL resizes an image with the name: myimage.png to 300 pixels wide by 300 pixels high converting the results to jpg file format.</p>
                 <p></p>
                 <p>IMAGE_FILENAME : myimage.png</p>
                 <p></p>
@@ -101,7 +110,7 @@
         <section>
             <h2><strong>Example 2</strong></h2>
                 <p></p>
-                <p>The following URL converts an image with the name: yourimage.png to 800 pixels wide by 500 pixels high saving the results to png file format.</p>
+                <p>The following URL resizes an image with the name: yourimage.png to 800 pixels wide by 500 pixels high saving the results to png file format.</p>
                 <p></p>
                 <p>IMAGE_FILENAME : myimage.png</p>
                 <p></p>

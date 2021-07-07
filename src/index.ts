@@ -20,7 +20,11 @@ const port = process.env.PORT || 3001;
 });
 
 
-app.use('/instructions', logger, express.static(path.join(__dirname, 'routes/instructions')));
+// app.get('/', logger, express.static(path.join(__dirname, 'routes/instructions')));
+app.get('/', logger, (req: { query: object; }, res: { sendFile: (arg: string ) => void; }) => {
+    // console.log("path.join(__dirname, 'routes/instructions'))",path.join(__dirname, 'routes/instructions'));
+    res.sendFile(path.join(__dirname, 'routes/instructions/index.html'));
+});
 
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
@@ -28,11 +32,11 @@ app.listen(port, () => {
 
 
 function defaultPage(req: {query: any; path: any;}, res: any, next: () => void) {
-    console.log('req.path', req.path);
-    console.log('req.query', req.query);
-    console.log('typeof req.query', typeof req.query);
+    // console.log('req.path', req.path);
+    // console.log('req.query', req.query);
+    // console.log('typeof req.query', typeof req.query);
     if(Object.keys(req.query).length == 0){
-        res.redirect('/instructions');
+        res.redirect('/');
     } else {
         next();
     }

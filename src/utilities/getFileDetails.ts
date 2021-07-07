@@ -6,8 +6,9 @@ function getFileDetails (givenReq:object): object {
     const width: number = userParams.width;
     const height: number = userParams.height;
     const filename: string = userParams.filename;
-    const fileExtension = filename.slice(filename.length-3,filename.length)
-    const fileOutputExt = userParams.format;
+    const fileExtension = filename.slice(filename.length-3,filename.length);
+    const fileOutputExt:string = userParams.format || fileExtension;
+    // if(fileOutputExt == undefined) fileOutputExt = fileExtension;
     let outputFilename: string, inputFile: string, outputFile: string;
     if(filename == undefined){
         inputFile = `${process.cwd()}/routes/instructions/index.html`;
