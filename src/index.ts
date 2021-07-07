@@ -1,4 +1,4 @@
-import express, { response } from 'express';
+import express, { request, response } from 'express';
 import imageCheck from './utilities/imageCheck';
 import logger from './utilities/logger';
 import getFileDetails from './utilities/getFileDetails';
@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 //async endpoint to convert image, Middleware to handle errors and log transactions to console.
- app.get('/convertImage', logger, errHandler, async (req: { query: object; }, res: { sendFile: (arg: string ) => void; }) => {
+ app.get('/convertImage',defaultPage, logger, errHandler, async (req: { query: object; }, res: { sendFile: (arg: string ) => void; }) => {
     let fileObj = getFileDetails(req.query) as unknown as {filename: string, fileExtension: string, outputFilename: string, fileOutputExt: string, inputFile: string, outputFile: string, width: number, height: number};
     if(fileObj.fileOutputExt == undefined)fileObj.fileOutputExt = fileObj.fileExtension;
     //Checks if image is on disk/otherwise creates the file.
@@ -19,15 +19,24 @@ const port = process.env.PORT || 3001;
 
 });
 
+
 app.use('/instructions', logger, express.static(path.join(__dirname, 'routes/instructions')));
 
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 });
 
-//DONE:TODO: add error handling as middleware what happens when width, height equals '' ? it crashes
-//Done:TODO: add format change additional functions in sharpUTIL
-//TODO: additional sharp processing options?  (Adding for example an extra option for toFormat(png) eg. &format=png or = )
+
+function defaultPage(req: {query: any; path: any;}, res: any, next: () => void) {
+    console.log('req.path', req.path);
+    console.log('req.query', req.query);
+    console.log('typeof req.query', typeof req.query);
+    if(Object.keys(req.query).length == 0){
+        res.redirect('/instructions');
+    } else {
+        next();
+    }
+}
 //TODO: create a front-end that displays a thumbnail directory?
 /*Loop over existing images in thumbs and display at the bottom of screen?
 res.send files as images on a second route?

@@ -18,8 +18,6 @@ function getFileDetails (givenReq:object): object {
         outputFilename = `${filename.slice(0,filename.length-4)}_${width}_${height}.${fileOutputExt}`;
         outputFile = `${imagePath}thumb/${outputFilename}`;
     }
-    
-    
 
     return {"filename":filename, "fileExtension": fileExtension, "outputFilename": outputFilename, "fileOutputExt": fileOutputExt, "inputFile":inputFile, "outputFile":outputFile, "width":width, "height":height};
 }

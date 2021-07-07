@@ -11,7 +11,7 @@ const sharpConvert = async (convert:{inputFile:string, fileExtension: string, ou
         async data => {
         await fsPromises.writeFile(convert.outputFile, data);
     });
-        return  convert.outputFile;
+        // return  convert.outputFile;
 }
 
 export default sharpConvert;

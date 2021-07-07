@@ -13,6 +13,7 @@ images/
 *.pdf
 *.webp
 action.log
+*.undefined
 
 #API keyes
 #.env
