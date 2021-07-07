@@ -3,7 +3,7 @@ import getFileDetails from './getFileDetails';
 import getTimeAndDate from './getTimeAndDate';
 import fs from 'fs';
 
-
+//Error detection for user input
 const errHandler = (req: {query: any; path: any;}, res: any, next: () => void) => {
     const inputFileGiven = getFileDetails(req.query) as unknown as {filename: string, fileExtension: string, outputFilename: string, inputFile: string, outputFile: string, width: number, height: number};
     
@@ -22,17 +22,14 @@ const errHandler = (req: {query: any; path: any;}, res: any, next: () => void) =
         case fs.existsSync(inputFileGiven.inputFile) == false:
             errorMessage = "Error: The requested input file does not exist";
             break; 
-        // case err != '':
-        //     errorMessage = 'Unknown system error, please try again.';
     }
     if(errorMessage != ''){
-        errorMessage += ` See <a href:${process.cwd()}/routes/instructions/index.html>/instructions</a> for more details.`;
+        errorMessage += ` See /convertImage for more details.`;
         console.log(`${getTimeAndDate()} ${errorMessage}`);
         res.send(errorMessage);
     } else {
         next();    
     }
-    
 }
 
 export default errHandler;
