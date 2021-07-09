@@ -1,13 +1,14 @@
+import express from 'express';
 import getFileDetails from './getFileDetails';
 import getTimeAndDate from './getTimeAndDate';
 import fs from 'fs';
 
 //Error detection for user input
 const errHandler = (
-  req: { query: any; path: any },
-  res: any,
+  req: express.Request,
+  res: express.Response,
   next: () => void
-) => {
+): void => {
   const inputFileGiven = (getFileDetails(req.query) as unknown) as {
     filename: string;
     fileExtension: string;
@@ -18,13 +19,13 @@ const errHandler = (
     height: number;
   };
 
-  let errorMessage: string = '';
+  let errorMessage = '';
 
   switch (true) {
-    case req.query.width == '' || isNaN(req.query.width):
+    case req.query.width == '' || isNaN(inputFileGiven.width):
       errorMessage = 'Error: To resize image enter a valid width.';
       break;
-    case req.query.height == '' || isNaN(req.query.height):
+    case req.query.height == '' || isNaN(inputFileGiven.height):
       errorMessage = 'Error: To resize image enter a valid height.';
       break;
     case req.query.filename == '':

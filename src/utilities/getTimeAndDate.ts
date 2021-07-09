@@ -1,4 +1,4 @@
-function getTimeAndDate() {
+function getTimeAndDate(): string {
   const dateTime: string =
     new Date().toLocaleDateString().replace(/\/+/g, '-') +
     '_' +

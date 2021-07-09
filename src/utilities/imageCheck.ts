@@ -2,8 +2,8 @@ import sharpConvert from './sharpUtil';
 import fs from 'fs';
 import getTimeAndDate from './getTimeAndDate';
 //checks if image is already on disk
-async function imageCheck(givenObj: object) {
-  let obj = (givenObj as unknown) as {
+async function imageCheck(givenObj: Express.Request): Promise<string> {
+  const obj = (givenObj as unknown) as {
     filename: string;
     fileExtension: string;
     outputFilename: string;

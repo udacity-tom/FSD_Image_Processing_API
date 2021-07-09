@@ -1,6 +1,17 @@
-function getFileDetails(givenReq: object): object {
+function getFileDetails(
+  givenReq: Express.Request
+): {
+  filename: string;
+  fileExtension: string;
+  outputFilename: string;
+  fileOutputExt: string;
+  inputFile: string;
+  outputFile: string;
+  width: number;
+  height: number;
+} {
   //collate given user data
-  let userParams = (givenReq as unknown) as {
+  const userParams = (givenReq as unknown) as {
     filename: string;
     width: number;
     height: number;

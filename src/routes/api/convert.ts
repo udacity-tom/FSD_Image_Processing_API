@@ -5,13 +5,27 @@ import imageCheck from '../../utilities/imageCheck';
 
 const convert = express.Router();
 
+//returns instructions page if no parameters passed to /convert
+function defaultPage(
+  //   req: { query: Record<string, unknown>; path: string },
+  //   res: any,
+  req: express.Request,
+  res: express.Response,
+  next: () => void
+) {
+  if (Object.keys(req.query).length == 0) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+}
 //async endpoint to convert image, Middleware to handle errors and log transactions to console.
 convert.get(
   '/',
   defaultPage,
   errHandler,
-  async (req: { query: object }, res: { sendFile: (arg: string) => void }) => {
-    let fileObj = (getFileDetails(req.query) as unknown) as {
+  async (req: express.Request, res: { sendFile: (arg: string) => void }) => {
+    const fileObj = (getFileDetails(req.query) as unknown) as {
       filename: string;
       fileExtension: string;
       outputFilename: string;
@@ -25,17 +39,5 @@ convert.get(
     res.sendFile(fileObj.outputFile);
   }
 );
-//returns instructions page if no parameters passed to /convert
-function defaultPage(
-  req: { query: any; path: any },
-  res: any,
-  next: () => void
-) {
-  if (Object.keys(req.query).length == 0) {
-    res.redirect('/');
-  } else {
-    next();
-  }
-}
 
 export default convert;

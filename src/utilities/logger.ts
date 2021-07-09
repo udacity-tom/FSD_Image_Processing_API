@@ -1,6 +1,11 @@
+import express from 'express';
 import getTimeAndDate from './getTimeAndDate';
 
-const logger = (req: { query: any; path: any }, res: any, next: () => void) => {
+const logger = (
+  req: express.Request,
+  res: express.Response,
+  next: () => void
+): void => {
   if (req.path == ('/favicon.ico' || '/favicon.ico ')) next();
   console.log(
     `${getTimeAndDate()} ${req.path} visited.` +
