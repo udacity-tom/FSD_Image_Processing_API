@@ -9,8 +9,10 @@ const routes = express.Router();
 routes.use(logger);
 routes.use('/', instructions);
 routes.use('/convertImage', convert);
-routes.use('*', (req,res) => {
-    res.send('Please use the /convertImage endpoint to convert images or <a href="/">instructions</a> for instructions.');
-})
+routes.use('*', (req, res) => {
+  res.send(
+    'Please use the /convertImage endpoint to convert images or <a href="/">instructions</a> for instructions.'
+  );
+});
 
-export default routes
+export default routes;
