@@ -9,24 +9,24 @@ describe('Testing Image Processing API', () => {
             it('checks response status from the endpoint /convertImage with parameters', async () => {
                 const response = await request.get('/convertImage?filename=image.png&format=jpg&width=300&height=300');
                 expect(response.status).toBe(200);
-                // done(); //depreciated as a callback when promise returned
             });
-            it('checks response from the endpoint /', async () => {
-                const response = await request.get('');
-                expect(response.status).toBe(404);
-                // done(); //depreciated as a callback when promise returned
+            it('checks status code from the endpoint /', async () => {
+                const response = await request.get('/');
+                expect(response.status).toBe(200);
             });
+            it('checks the instructions page is delivered', async () => {
+                const response = await request.get('/');
+                expect(response.text).toContain('<h1>Using the Image Processing API</h1>'); 
+            })
         });
             describe('Tests current response of /convertImage endpoint with no parameters', () => {
             it('checks response is redirected to /', async () => {
                 const response = await request.get('/convertImage');
                 expect(response.text).toBe('Found. Redirecting to /');
-                // done(); //depreciated as a callback when promise returned
             });
             it('checks status code is 302 (redirection)', async () => {
                 const response = await request.get('/convertImage');
                 expect(response.status).toBe(302);
-                // done(); //depreciated as a callback when promise returned
             });
         });
     });
