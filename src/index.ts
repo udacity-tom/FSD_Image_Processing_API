@@ -1,13 +1,11 @@
 import express, { request, response } from 'express';
 import routes from './routes/index';
-import logger from './utilities/logger';
-
 
 //sets up Express/port
 const app = express();
 const port = process.env.PORT || 3001;
 
-app.use('/', logger, routes);
+app.use('/', routes);
 
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);

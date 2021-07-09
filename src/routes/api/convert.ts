@@ -1,5 +1,4 @@
 import express from 'express';
-import logger from '../../utilities/logger';
 import errHandler from '../../utilities/errHandler';
 import getFileDetails from '../../utilities/getFileDetails';
 import imageCheck from '../../utilities/imageCheck';
