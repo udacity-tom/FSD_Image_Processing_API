@@ -1,4 +1,3 @@
-// import express from  'express';
 import getFileDetails from './getFileDetails';
 import getTimeAndDate from './getTimeAndDate';
 import fs from 'fs';

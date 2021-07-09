@@ -5,10 +5,7 @@ import logger from '../utilities/logger';
 
 const routes = express.Router();
 
-// routes.get('/', logger, (req: { query: object; }, res: { sendFile: (arg: string ) => void; }) => {
-//     res.sendFile(path.join(__dirname, 'instructions/index.html'));
-// });
-
+//express router to route on endpoint use
 routes.use(logger);
 routes.use('/', instructions);
 routes.use('/convertImage', convert);
