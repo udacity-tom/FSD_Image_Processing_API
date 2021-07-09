@@ -14,17 +14,17 @@ const errHandler = (req: {query: any; path: any;}, res: any, next: () => void) =
             errorMessage = "Error: To resize image enter a valid width.";
             break;            
         case req.query.height == '' || isNaN(req.query.height):
-            errorMessage = "Error: To resize image enter a valid height";
+            errorMessage = "Error: To resize image enter a valid height.";
             break; 
         case req.query.filename == '':
-            errorMessage = "Error: To resize image enter a valid filename";
+            errorMessage = "Error: To resize image enter a valid filename.";
             break; 
         case fs.existsSync(inputFileGiven.inputFile) == false:
-            errorMessage = "Error: The requested input file does not exist";
+            errorMessage = "Error: The requested input file does not exist.";
             break; 
     }
     if(errorMessage != ''){
-        errorMessage += ` See /convertImage for more details.`;
+        errorMessage += ` See the <a href='/'>instructions</a> for more details.`;
         console.log(`${getTimeAndDate()} ${errorMessage}`);
         res.send(errorMessage);
     } else {
