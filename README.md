@@ -12,7 +12,7 @@ Through the use of a single URL call, once resized and reformatted the URL itsel
 The entire project was created from scratch as a new Typescript project. This project required the implementation of a specific architecture and structure to maintain scalability and seperate development and production code.
 Using npm, scripts were written for testing, building, linting and prettifying.
 
-Express is used on the server side to ease and simplify route implementation and serving files. The core image library Sharp was used for image manipulation, reformating and resizing images.
+Express is used on the server side to ease and simplify route implementation and serving files. The core image package [Sharp](https://www.npmjs.com/package/sharp) was used for image manipulation, reformating and resizing images.
 
 Middleware was written to take advantage of Sharp and provide basic user feedback and information on how to use the tool.
 
@@ -20,15 +20,18 @@ Unit tests are written in Jasmine.
 
 ## API Usage
 
-On calling the URL of the image together with the relevant query parameters, 
-
-`localhost:3001/api/convertImage?filename=image.png&format=jpg&width=300&height=300`
-
-the image will be resized and reformatted and saved in a 'thumbs' subdirectory. Subsequent calls to the same URL will be served from disk rather than being resized and reformatted again.
-
 A full description of how to use the API is accessable via
 
-`localhost:3001/api/`
+`localhost:3001/`
+
+On calling the URL of the image together with the relevant query parameters, for example,
+
+`localhost:3001/convertImage?filename=image.png&format=jpg&width=300&height=300`
+
+the `image.png`(as in this example) will be resized and reformatted and saved in a 'thumbs' subdirectory. Subsequent calls to the same URL will be served from disk rather than being resized and reformatted again.
+
+Without the query parameters the endpoint, `localhost:3001/convertImage` (for example), will redirect to the instructions page. Any other request ofther than `localhost:3001/`or `localhost:3001/convertImage`or ``localhost:3001/convertImage?filename=image.png&format=jpg&width=300&height=300` or `localhost:3001/convertImage?filename=image.png&width=300&height=300` will be redirected to the instruction page.
+
 
 ### Web API Additional Suggestions Added 
 - Can accept and output other image formats other than JPG

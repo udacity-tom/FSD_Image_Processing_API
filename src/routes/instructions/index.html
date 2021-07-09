@@ -21,36 +21,31 @@
     </style>
     <body>
         <section>
-            <p><a href="/convertImage?filename=fjord.jpg&format=png&width=300&height=300">Return to image conversion link</a></p>
+            <p><a href="/convertImage?filename=fjord.jpg&format=png&width=300&height=300">Return to test image conversion link</a></p>
         </section>
         <section>
             <h1>Using the Image Processing API</h1>
 
             <h2>An Overview</h2>
-            <p>This Image Processing API was creaeted to enable image reprocessing of images into various sizes and file types.</p>
-            <p>Using the following URL, noted in the example below, the requested image file can be resized and re-formatted to whatever the user requires from the original image.</p>
-            <p></p>
-            <p>After the initial server request, the file is created based on the URL request parameters as detailed below.</p>
-            <p></p>
-            <p>Once created, the file will be delivered from disk instead of re-creating the resized image effectively caching the image on the local server.</p>
+            <p>This Image Processing API was created to enable reprocessing of images into various sizes and file types.</p>
+            <p>Using the URL noted in the example below, the requested image file can be resized and re-formatted to whatever the user requires from the original image.</p>
+            <p>After the initial server request, the file is created based on the URL request parameters as detailed and described below.</p>
+            <p>Once created, the file will be delivered from disk instead of re-creating effectively caching the image on the local server.</p>
             <p>Meaning the URL request can be used as a placeholder for the resized and reformatted image.</p>
             <br>
         </section>
         <section>
             <h2>Generic Example & Explanation</h2>
-            <p>Use the following URL to reference how to access the API. The converted file can be called with the URL used to resize the image.</p>
+            <p>Use the following URL to reference how to access the API. The converted file can be called with the same URL used to resize the image.</p>
             <br>
             <code>http://localhost:3001/convertImage?filename=IMAGE_FILENAME&format=OUTPUT_FORMAT&width=WIDTH_PIXELS&height=HEIGHT_PIXELS</code>
-            <p></p>
             <br>
             <p>Where HEIGHT_PIXELS represents the desired resized image height, as a number, in pixels.</p>
-            <p></p>
             <p>Where WIDTH_PIXELS represents the desired resized image width, as a number, in pixels.</p>
-            <p></p>
             <p>OUTPUT_FORMAT represents the desired image format, as described below.</p>
-            <p></p>
             <p>Where IMAGE_FILENAME is the filename of the image to be processed. </p>
-            <p></p>  
+            <p>A demonstration file has been placed in 'assets/full' folder. By clicking the following link a thumbnail image will be created and placed in 'assets/thumb' folder.</p>
+            <code><a href="http://localhost:3001/convertImage?filename=fjord.jpg&format=png&width=300&height=300">http://localhost:3001/convertImage?filename=fjord.jpg&format=png&width=300&height=300</a></code>
             <br>
         </section>
         <section>
@@ -83,43 +78,27 @@
             <h2><strong>Image Locations</strong></h2>
                 <p></p>
                 <p>The returned images are linkable by the URL used to resize them.</p>
-                <p></p>
-                <p>Original images are stored on the server in the 'assets' directory in the root of the project.. </p>
-                <p></p>
-                <p>The resized immages are created and saved in the 'thumb' directory within the 'assets' directory.</p>
+                <p>Original images are stored on the server in the 'assets/full' directory in the root of the project.. </p>
+                <p>The resized immages are created and saved in the 'assets/thumb' directory within the 'assets' directory.</p>
         </section>
         <section>
             <h2><strong>Example 1</strong></h2>
-                <p></p>
                 <p>The following URL resizes an image with the name: myimage.png to 300 pixels wide by 300 pixels high converting the results to jpg file format.</p>
-                <p></p>
                 <p>IMAGE_FILENAME : myimage.png</p>
-                <p></p>
                 <p>OUTPUT_FORMAT : jpg</p>
-                <p></p>
                 <p>WIDTH_PIXELS : 300</p>
-                <p></p>
                 <p>HEIGHT_PIXELS : 300</p>
-                <p></p>
                 <p>Enter the following URL to obtain the desired image resizing.</p>
-                <p></p>
-                <code>http://localhost:3001/convertImage?filename=myimage.png&format=jpg&width=300&height=300</code>
+                <code>http://localhost:3001/convertImage?filename=yourimage.png&format=jpg&width=300&height=300</code>
         </section>
         <section>
             <h2><strong>Example 2</strong></h2>
-                <p></p>
                 <p>The following URL resizes an image with the name: yourimage.png to 800 pixels wide by 500 pixels high saving the results to png file format.</p>
-                <p></p>
                 <p>IMAGE_FILENAME : myimage.png</p>
-                <p></p>
                 <p><span>OUTPUT_FORMAT : png</span> *When saving in the original output format this option is unneeded.</p>
-                <p></p>
                 <p>WIDTH_PIXELS : 300</p>
-                <p></p>
                 <p>HEIGHT_PIXELS : 300</p>
-                <p></p>
                 <p>Enter the following URL to obtain the desired image resizing.</p>
-                <p></p>
                 <code>http://localhost:3001/convertImage?filename=yourimage.png&width=800&height=500</code>
                 <br>
         </section>
