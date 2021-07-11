@@ -8,7 +8,7 @@ describe('Testing Image Processing API', () => {
     describe('Tests endpoint is responsive', () => {
       it('checks response status from the endpoint /convertImage with parameters', async () => {
         const response = await request.get(
-          '/convertImage?filename=image.png&format=jpg&width=300&height=300'
+          '/convertImage?filename=fjord.jpg&format=jpg&width=300&height=300'
         );
         expect(response.status).toBe(200);
       });
@@ -37,7 +37,7 @@ describe('Testing Image Processing API', () => {
   describe('Tests image processing', () => {
     it('checks image is returned', async () => {
       const response = await request.get(
-        '/convertImage?filename=image.png&format=jpg&width=300&height=310'
+        '/convertImage?filename=fjord.jpg&format=jpg&width=300&height=310'
       );
       expect(response.type).toContain('image/jpeg');
     });
@@ -45,7 +45,7 @@ describe('Testing Image Processing API', () => {
   describe('Tests error message response', () => {
     it('sends an error message if height not set', async () => {
       const response = await request.get(
-        '/convertImage?filename=image.png&format=jpg&width=300&height='
+        '/convertImage?filename=fjord.jpg&format=png&width=300&height='
       );
       expect(response.text).toContain('To resize image enter a valid height');
     });
